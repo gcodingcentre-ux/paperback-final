@@ -1,0 +1,43 @@
+/* PaperBack – search bar above the hero carousel */
+.search-band{padding:1rem clamp(1rem,5vw,4rem) .4rem;background:#fff}
+.sb{position:relative;max-width:640px;margin:0 auto}
+.sb-field{position:relative;display:flex;align-items:center}
+.sb-ico{position:absolute;left:1rem;top:50%;width:20px;height:20px;margin-top:-10px;fill:none;stroke:var(--blue-deep);stroke-width:2.2;stroke-linecap:round;pointer-events:none}
+.sb-input{width:100%;font:inherit;font-size:1rem;color:var(--ink);background:#fff;border:2px solid #cfd9ee;border-radius:999px;padding:.8rem 3.6rem .8rem 2.9rem;min-height:50px;box-shadow:0 6px 18px -12px rgba(22,35,63,.45);transition:border-color .2s,box-shadow .2s;-webkit-appearance:none;appearance:none}
+.sb-input::-webkit-search-cancel-button,.sb-input::-webkit-search-decoration{-webkit-appearance:none;display:none}
+.sb-input:hover{border-color:var(--blue)}
+.sb-input:focus{outline:0;border-color:var(--blue);box-shadow:0 0 0 4px rgba(79,129,211,.2)}
+.sb-go{position:absolute;right:5px;top:5px;bottom:5px;width:42px;border:0;border-radius:50%;background:var(--blue-deep);color:#fff;cursor:pointer;display:grid;place-items:center;transition:background .2s}
+.sb-go:hover,.sb-go:focus-visible{background:var(--blue)}
+.sb-go svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round}
+/* the two placeholders slide up one after the other */
+.sb-ph{position:absolute;left:2.9rem;right:3.6rem;top:0;bottom:0;overflow:hidden;pointer-events:none}
+.sb-ph span{position:absolute;left:0;right:0;top:0;bottom:0;display:flex;align-items:center;color:var(--muted);font-size:1rem;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;opacity:0;transform:translateY(100%);transition:transform .55s ease,opacity .55s ease}
+.sb-ph span[lang="bn"]{font-family:"Noto Sans Bengali","Hind Siliguri",var(--sans);font-size:1.02rem}
+.sb-ph span.on{opacity:1;transform:none}
+.sb-ph span.out{opacity:0;transform:translateY(-100%)}
+.sb-ph span.no-t{transition:none}
+.sb-field.has-value .sb-ph{display:none}
+/* results */
+.sb-results{position:absolute;left:0;right:0;top:calc(100% + 8px);z-index:15;margin:0;padding:.4rem;list-style:none;background:#fff;border:1px solid #e3e9f3;border-top:3px solid var(--green);border-radius:14px;box-shadow:0 22px 40px -18px rgba(22,35,63,.5);max-height:min(60vh,420px);overflow:auto}
+.sb-results[hidden]{display:none}
+.sb-results a{display:flex;align-items:center;gap:.8rem;padding:.5rem .6rem;border-radius:10px;text-decoration:none;color:var(--ink)}
+.sb-results li[aria-selected="true"] a,.sb-results a:hover{background:var(--sky)}
+.sb-cv{flex:none;width:34px;aspect-ratio:2/3;border-radius:2px 5px 5px 2px;overflow:hidden;box-shadow:inset 4px 0 0 rgba(0,0,0,.15)}
+.sb-cv img{width:100%;height:100%;object-fit:cover;display:block}
+.sb-results b{display:block;line-height:1.25}
+.sb-results small{display:block;color:var(--muted);font-size:.85rem}
+.sb-results mark{background:#e4f2cc;color:inherit;border-radius:3px;padding:0 1px}
+.sb-none{padding:.9rem 1rem;color:var(--muted)}
+@media (max-width:600px){
+  .search-band{padding-top:.7rem}
+  .sb-input{font-size:16px}  /* 16px stops iPhones from zooming in when the box is tapped */
+}
+@media (prefers-reduced-motion:reduce){.sb-ph span{transition:opacity .2s}.sb-ph span.out,.sb-ph span:not(.on){transform:none}}
+
+/* "Showing results for ..." bar above the catalogue */
+.cat-status{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.6rem 1rem;margin:0 0 1rem;font-weight:700;color:var(--blue-deep)}
+.cat-status[hidden]{display:none}
+.cat-status button{font:inherit;font-weight:700;font-size:.9rem;color:var(--blue-deep);background:#fff;border:2px solid #cfd9ee;border-radius:999px;padding:.25rem .9rem;cursor:pointer}
+.cat-status button:hover{border-color:var(--blue)}
+.cat-empty{margin:1rem auto;color:var(--muted);text-align:center;flex:1 0 100%}

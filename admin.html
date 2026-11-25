@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Admin – PaperBack Publishers</title>
+<link rel="icon" href="/favicon.ico?v=2" sizes="48x48">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=2">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png?v=2">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png?v=2">
+<link rel="apple-touch-icon" href="/favicon-180.png?v=2">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#4F81D3;--bd:#1E3A6E;--green:#9AC44A;--gd:#4F7A12;--ink:#16233F;--muted:#51607D;--sky:#EAF0FB;--line:#dbe4f4;--red:#B3261E}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.5 Figtree,system-ui,sans-serif;color:var(--ink);background:#f6f8fc}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;margin:0;color:var(--bd)}
+[hidden]{display:none!important}
+button{font:inherit;cursor:pointer}
+.btn{border:0;border-radius:8px;padding:.55rem 1rem;font-weight:700;color:#fff;background:var(--bd)}
+.btn.g{background:var(--gd)}.btn.r{background:var(--red)}.btn.o{background:#fff;color:var(--bd);border:2px solid var(--line)}
+.btn.s{padding:.3rem .65rem;font-size:.85rem}
+input,select,textarea{font:inherit;width:100%;padding:.6rem .75rem;border:2px solid var(--line);border-radius:8px;background:#fff;color:var(--ink)}
+input:focus,select:focus,textarea:focus{outline:0;border-color:var(--blue)}
+label{display:block;font-weight:700;font-size:.9rem;margin-bottom:.9rem}
+label input,label select,label textarea{margin-top:.3rem;font-weight:400}
+.err{color:var(--red);font-weight:700;min-height:1.4em;font-size:.9rem}
+/* login */
+#login{min-height:100vh;display:grid;place-items:center;padding:1rem;background:linear-gradient(160deg,var(--bd),var(--blue))}
+.lbox{background:#fff;border-radius:16px;padding:2rem;width:100%;max-width:380px;box-shadow:0 20px 50px #0004}
+.lbox h1{font-size:1.9rem;margin-bottom:.2rem}.lbox p{color:var(--muted);margin:0 0 1.2rem}
+.lbox .btn{width:100%;padding:.75rem}
+/* layout */
+#app{display:grid;grid-template-columns:240px 1fr;min-height:100vh}
+aside{background:var(--bd);color:#fff;padding:1.2rem .8rem;position:sticky;top:0;height:100vh;overflow:auto}
+aside h2{color:#fff;font-size:1.25rem;padding:0 .6rem 1rem}
+aside h2 small{display:block;font:500 .75rem Figtree;color:#b9c8e8}
+.nav button{display:flex;justify-content:space-between;width:100%;background:0;border:0;color:#dbe6ff;text-align:left;padding:.6rem .7rem;border-radius:8px;font-weight:500}
+.nav button:hover{background:#ffffff1a}.nav button.on{background:var(--green);color:#10260a;font-weight:700}
+.nav b{font-size:.75rem;background:#ffffff30;border-radius:99px;padding:0 .5rem;align-self:center}
+.side-tools{margin-top:1rem;padding-top:1rem;border-top:1px solid #ffffff30;display:grid;gap:.5rem}
+.side-tools .btn{background:#ffffff1f;font-weight:500;text-align:left}
+main{padding:1.5rem clamp(1rem,3vw,2.5rem);min-width:0}
+.top{display:flex;flex-wrap:wrap;gap:.8rem;align-items:center;justify-content:space-between;margin-bottom:.4rem}
+.top h2{font-size:1.9rem}
+.hint{color:var(--muted);margin:0 0 1.2rem;max-width:75ch}
+.tools{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:1rem}.tools input{max-width:300px}
+.card{background:#fff;border:2px solid var(--line);border-radius:12px;overflow:auto}
+table{width:100%;border-collapse:collapse}
+th,td{text-align:left;padding:.7rem .9rem;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--sky);font-size:.8rem;text-transform:uppercase;letter-spacing:.04em;color:var(--bd)}
+td.act{white-space:nowrap;text-align:right}td.act .btn{margin-left:.25rem}
+td .cl{max-width:380px;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.pill{display:inline-block;padding:.1rem .6rem;border-radius:99px;background:var(--sky);color:var(--bd);font-size:.8rem;font-weight:700}
+.pill.ok{background:#e4f2cc;color:var(--gd)}.pill.wait{background:#fff0c9;color:#8a5a00}
+.empty{padding:2rem;text-align:center;color:var(--muted)}
+/* modal */
+#modal,#pwm{position:fixed;inset:0;background:#0a1530a8;display:grid;place-items:center;padding:1rem;z-index:10}
+.flink{background:0;border:0;color:var(--blue);text-decoration:underline;padding:0;margin-top:.9rem;font-weight:500}
+.mbox{background:#fff;border-radius:14px;width:100%;max-width:560px;max-height:92vh;overflow:auto;padding:1.5rem}
+.mbox h3{font-size:1.4rem;margin-bottom:1rem}
+.row{display:flex;gap:.6rem;justify-content:flex-end;margin-top:.5rem}
+#toast{position:fixed;bottom:1.2rem;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:.6rem 1.1rem;border-radius:8px;z-index:20;font-weight:700}
+.imgbox{display:flex;gap:.9rem;align-items:flex-start;margin-top:.3rem;font-weight:400}
+.imgbox img{width:90px;aspect-ratio:2/3;object-fit:cover;border-radius:6px;border:2px solid var(--line);background:var(--sky);flex:none}
+.imgbox .noimg{width:90px;aspect-ratio:2/3;border-radius:6px;border:2px dashed var(--line);display:grid;place-items:center;color:var(--muted);font-size:.75rem;text-align:center;flex:none}
+.imgbox small{display:block;color:var(--muted);margin:.4rem 0;font-weight:400}
+.imgbox input[type=file]{padding:.4rem}
+td img.th{width:38px;aspect-ratio:2/3;object-fit:cover;border-radius:4px;border:1px solid var(--line);display:block}
+.menu-btn{display:none}
+@media(max-width:820px){
+ #app{grid-template-columns:1fr}
+ aside{position:static;height:auto}
+ .nav{display:flex;flex-wrap:wrap;gap:.3rem}.nav button{width:auto;gap:.5rem}
+}
+</style>
+</head>
+<body>
+
+<section id="login">
+  <form class="lbox" id="lf">
+    <h1>PaperBack Admin</h1>
+    <p>Sign in to manage your website.</p>
+    <label>Login ID<input id="u" autocomplete="username" autofocus></label>
+    <label>Password<input id="p" type="password" autocomplete="current-password"></label>
+    <div class="err" id="le" aria-live="polite"></div>
+    <button class="btn" type="submit">Log in</button>
+    <button class="flink" type="button" id="fp">Forgot password?</button>
+  </form>
+  <form class="lbox" id="rf" hidden>
+    <h1>Reset password</h1>
+    <p>Enter the recovery key (set as <b>ADMIN_RECOVERY_KEY</b> in your Vercel project settings) and choose a new password.</p>
+    <label>Recovery key<input id="rk" type="password" autocomplete="off"></label>
+    <label>New password (8+ characters)<input id="rn" type="password" autocomplete="new-password"></label>
+    <label>Repeat new password<input id="rn2" type="password" autocomplete="new-password"></label>
+    <div class="err" id="re" aria-live="polite"></div>
+    <button class="btn" type="submit">Set new password</button>
+    <button class="flink" type="button" id="rb">Back to login</button>
+  </form>
+</section>
+
+<div id="app" hidden>
+  <aside>
+    <h2>PaperBack<small>Website dashboard</small></h2>
+    <div class="nav" id="nav"></div>
+    <div class="side-tools">
+      <button class="btn" id="dl">⬇ Download site-content.js</button>
+      <button class="btn" id="ex">Export JSON backup</button>
+      <button class="btn" id="im">Import JSON</button>
+      <button class="btn" id="rs">Reset to defaults</button>
+      <button class="btn" id="cp">Change password</button>
+      <button class="btn" id="lo">Log out</button>
+      <input type="file" id="file" accept=".json" hidden>
+    </div>
+  </aside>
+  <main>
+    <div class="top"><h2 id="t"></h2><button class="btn g" id="add">+ Add new</button></div>
+    <p class="hint" id="h"></p>
+    <div class="tools"><input id="q" type="search" placeholder="Search…" aria-label="Search"></div>
+    <div class="card"><table><thead id="th"></thead><tbody id="tb"></tbody></table><div class="empty" id="em" hidden></div></div>
+  </main>
+</div>
+
+<div id="modal" hidden><form class="mbox" id="mf"><h3 id="mt"></h3><div id="mfields"></div><div class="row"><button type="button" class="btn o" id="mc">Cancel</button><button class="btn g" type="submit">Save</button></div></form></div>
+<div id="pwm" hidden><form class="mbox" id="pf"><h3>Change password</h3>
+  <label>Current password<input id="pc" type="password" autocomplete="current-password"></label>
+  <label>New password (8+ characters)<input id="pn" type="password" autocomplete="new-password"></label>
+  <label>Repeat new password<input id="pn2" type="password" autocomplete="new-password"></label>
+  <div class="err" id="pe" aria-live="polite"></div>
+  <div class="row"><button type="button" class="btn o" id="pcx">Cancel</button><button class="btn g" type="submit">Change password</button></div></form></div>
+<div id="toast" hidden></div>
+
+<script>
+/* ===== Login is checked on the server (/api/auth). The token is kept for this tab only. ===== */
+const SESS="pb_admin_token";
+const token=()=>sessionStorage.getItem(SESS)||"";
+
+/* ===== Segments: f = [name,label,type,options]  type: t text | a textarea | s select | n number | d date
+   cols = columns shown in the list.  Each segment matches a section of the website. ===== */
+const COLORS=["blue","green","navy","moss"], GENRES=["Fiction","Non-fiction","Children","Poetry","Other"];
+const SEG={
+ banners:{label:"Home banners",hint:"Slides in the top carousel of the home page.",cols:["title","text","color"],
+  f:[["title","Heading","t"],["text","Text","a"],["button","Button label","t"],["link","Button link","t"],["color","Colour","s",["blue","navy","green"]]],
+  seed:[{title:"New titles for the season",text:"Fiction, non-fiction, poetry and children's books from our latest list.",button:"Browse our titles",link:"#catalogue",color:"navy"},{title:"Publish your first book",text:"Send us your manuscript. An editor reads every submission and replies within two weeks.",button:"Submit your manuscript",link:"#submit",color:"green"},{title:"Stories for young readers",text:"Picture books and early readers that children ask to hear again.",button:"See children's books",link:"#catalogue",color:"blue"}]},
+ books:{label:"Books",hint:"The catalogue and each book's landing page. Set “New release” to Yes to show it in New releases.",cols:["image","title","author","genre","isNew"],
+  f:[["image","Cover image","i"],["title","Title","t"],["author","Author","t"],["genre","Genre","s",GENRES],["color","Cover colour","s",COLORS],["isNew","New release?","s",["No","Yes"]],["price","Price (₹, optional)","n"],["summary","Summary","a"],["bio","About the author","a"]],
+  seed:[["The Salt Road","Meera Sengupta","Fiction","blue","Yes"],["Monsoon Ledger","Arjun Dutta","Fiction","green","Yes"],["Quiet Algorithms","Ritika Bose","Non-fiction","navy","Yes"],["Rivers of Kolkata","Sourav Mitra","Non-fiction","moss","No"],["Little Lantern","Ananya Roy","Children","green","Yes"],["Counting Stars at Noon","Tanmoy Paul","Children","blue","No"],["Notes from a Tea Garden","Isha Banerjee","Poetry","navy","No"],["Ink & Alum","Kabir Chanda","Poetry","moss","No"]].map(b=>({title:b[0],author:b[1],genre:b[2],color:b[3],isNew:b[4],price:"",summary:"",bio:"",image:""}))},
+ authors:{label:"Authors",hint:"Author cards in “Our authors”.",cols:["name","book","genre"],
+  f:[["name","Name","t"],["book","Known for (book)","t"],["genre","Genre","s",GENRES],["bio","Short bio","a"]],
+  seed:[["Meera Sengupta","The Salt Road","Fiction","Grew up in Howrah and worked as a journalist for twelve years before turning to fiction."],["Arjun Dutta","Monsoon Ledger","Fiction","A chartered accountant and short-story writer whose work has appeared in Bengali and English magazines."],["Ritika Bose","Quiet Algorithms","Non-fiction","A data scientist and writer who teaches at a university in West Bengal."],["Sourav Mitra","Rivers of Kolkata","Non-fiction","An urban historian and walking-tour guide who has spent two decades mapping Kolkata's canals."],["Ananya Roy","Little Lantern","Children","A primary school teacher who writes the stories she wishes she had to read aloud in class."],["Isha Banerjee","Notes from a Tea Garden","Poetry","Grew up on a tea estate in the Darjeeling hills and now teaches literature."]].map(a=>({name:a[0],book:a[1],genre:a[2],bio:a[3]}))},
+ publishing:{label:"Publishing plans",hint:"The cards in “Publishing with us”. Put one bullet point per line.",cols:["title","tag","text"],
+  f:[["tag","Tag line","t"],["title","Plan name","t"],["text","Description","a"],["points","Bullet points (one per line)","a"]],
+  seed:[{tag:"You lead",title:"Self-publishing",text:"You keep full control and full rights. We provide the services you choose.",points:"Pick only the services you need\nYou own your rights and set your price\nPrint runs from 100 copies"},{tag:"We share the work",title:"Hybrid publishing",text:"A partnership: you contribute to the production cost, and we bring our editors, designers and distribution network.",points:"Professional editing and design included\nBookshop and library distribution\nHigher royalty share than traditional deals"},{tag:"Get it read",title:"Marketing",text:"We plan the launch, set up your author page and help you reach reviewers, bookshops and local media.",points:"Launch plan and author profile\nSocial media and press outreach\nBook launch and event support"}]},
+ services:{label:"Services",hint:"“Everything your book needs” cards.",cols:["title","text"],f:[["title","Title","t"],["text","Description","a"]],
+  seed:[{title:"Editing",text:"Developmental, line and copy editing by editors who work in your genre."},{title:"Cover and layout",text:"Covers and interiors designed for the print edition and the e-book."},{title:"Print and ISBN",text:"Paperback and hardback runs from 100 copies, with ISBN registration included."},{title:"Distribution",text:"Your book reaches bookshops, libraries and online stores across India and abroad."}]},
+ process:{label:"Process steps",hint:"“From manuscript to bookshelf” steps, shown in this order.",cols:["title","text"],f:[["title","Step title","t"],["text","Description","a"]],
+  seed:[{title:"Send your manuscript",text:"Share your draft and a short synopsis. We reply within two weeks."},{title:"Edit together",text:"Your editor returns notes. You approve every change."},{title:"Design and proof",text:"Review the cover and the typeset pages before anything is printed."},{title:"Print and launch",text:"We print, ship and help you plan a launch."}]},
+ events:{label:"Events",hint:"Event cards. Add a date or venue in the text when you have one.",cols:["icon","title","text"],f:[["icon","Emoji icon","t"],["title","Title","t"],["text","Description","a"],["date","Date (optional)","d"],["button","Button label","t"],["link","Button link","t"]],
+  seed:[{icon:"✍️",title:"Workshops",text:"Hands-on sessions on writing, editing and getting a manuscript ready.",date:"",button:"Ask about workshops",link:"https://wa.me/919000000000"},{icon:"📚",title:"Book launches",text:"Readings, signings and conversations to launch our new titles.",date:"",button:"Ask about launches",link:"https://wa.me/919000000000"},{icon:"🎤",title:"Other events",text:"Author meet-ups, book fair stalls, poetry evenings and school visits.",date:"",button:"Ask about events",link:"https://wa.me/919000000000"}]},
+ feedback:{label:"Reader feedback",hint:"Approve to show a message under “What readers say”. New messages from website visitors appear here as “pending”.",cols:["name","rating","message","status"],
+  f:[["name","Name","t"],["rating","Rating (1–5)","s",["5","4","3","2","1"]],["message","Message","a"],["date","Date","d"],["status","Status","s",["approved","pending"]]],
+  seed:[]},
+ about:{label:"About facts",hint:"Key facts in the About section (e.g. Titles published → 240+).",cols:["label","value"],f:[["label","Label","t"],["value","Value","t"]],
+  seed:[{label:"Titles published",value:"240+"},{label:"Languages",value:"English, Bengali, Hindi"},{label:"Author royalty",value:"Up to 40%"}]},
+ coupons:{label:"Coupons",hint:"Discount codes. “Show on website” = Yes puts the offer on the home page and applies it automatically on book pages; No keeps it a private code that customers type in. Prices come from each book's Price field.",cols:["code","type","value","active","show","expires"],
+  f:[["code","Coupon code (letters/numbers, no spaces)","t"],["type","Discount type","s",["percent","flat"]],["value","Value (percent: 1–100, flat: rupees off)","n"],["active","Active?","s",["Yes","No"]],["show","Show on website?","s",["No","Yes"]],["expires","Last valid day (optional)","d"],["note","Note for yourself (optional)","t"]],
+  seed:[{code:"PAPER10",type:"percent",value:"10",active:"Yes",show:"No",expires:"",note:""},{code:"WELCOME50",type:"flat",value:"50",active:"Yes",show:"No",expires:"",note:""}]},
+ settings:{label:"Contact & social",hint:"Phone, email, WhatsApp, address and social links used across the site and footer.",cols:["label","value"],f:[["label","Setting name","t"],["value","Value","t"]],
+  seed:[{label:"Phone",value:"+91 90000 00000"},{label:"WhatsApp number",value:"919000000000"},{label:"Email",value:"hello@paperbackpublishers.com"},{label:"Address",value:"Kolkata, West Bengal, India"},{label:"Facebook",value:"https://www.facebook.com/paperbackpublishers"},{label:"Instagram",value:"https://www.instagram.com/paperbackpublishers"}]}
+};
+
+/* ===== Data ===== */
+const $=id=>document.getElementById(id);
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function defaults(){const d={};for(const k in SEG)d[k]=SEG[k].seed.map(x=>({id:uid(),...x}));return d}
+let DB=defaults(), cur="banners", editing=null;
+function toast(m,ms){const t=$("toast");t.textContent=m;t.hidden=false;clearTimeout(t._t);t._t=setTimeout(()=>t.hidden=true,ms||2200)}
+
+/* Every change is sent to the server (Redis). Saves run one after another so they never overwrite each other. */
+let saveChain=Promise.resolve(), lastGood="";   // lastGood = the content the server accepted last
+function persist(){
+  const snap=JSON.stringify(DB), body='{"content":'+snap+'}';
+  saveChain=saveChain
+    .then(()=>fetch("/api/save-content",{method:"POST",headers:{"Content-Type":"application/json","Authorization":"Bearer "+token()},body}))
+    .then(async r=>{
+      if(r.status===401){toast("Session expired. Please log in again.",4000);setTimeout(logout,1500);return false}
+      if(!r.ok){const d=await r.json().catch(()=>({}));throw new Error(d.error||("Error "+r.status))}
+      lastGood=snap;toast("Saved to website ✓");return true;
+    })
+    .catch(e=>{
+      // The server refused this change: undo it here too, so one bad entry cannot block every later save.
+      if(lastGood){DB=JSON.parse(lastGood);render()}
+      toast("NOT saved (change undone): "+e.message,6000);return false});
+  return saveChain;
+}
+
+/* visitor feedback waiting on the server -> shown in the Reader feedback list as "pending" */
+function mergePending(pending){
+  let added=false;
+  (Array.isArray(pending)?pending:[]).forEach(f=>{
+    if(f&&f.id&&!DB.feedback.some(x=>x.id===f.id)){DB.feedback.unshift({id:f.id,name:f.name,rating:String(f.rating),date:f.date,message:f.message,status:"pending"});added=true}
+  });
+  return added;
+}
+
+/* ===== Render ===== */
+function nav(){
+  $("nav").innerHTML=Object.keys(SEG).map(k=>`<button data-k="${k}" class="${k===cur?"on":""}">${SEG[k].label}<b>${DB[k].length}</b></button>`).join("");
+}
+function cell(seg,name,v){
+  if(name==="image")return v?`<img class="th" src="${esc(v)}" alt="" loading="lazy">`:"—";
+  if(name==="status")return `<span class="pill ${v==="approved"?"ok":"wait"}">${esc(v)}</span>`;
+  if(name==="rating"){const n=Math.min(5,Math.max(0,parseInt(v,10)||0));return "★".repeat(n)+"☆".repeat(5-n)}
+  return `<div class="cl">${esc(v)}</div>`;
+}
+function render(){
+  const s=SEG[cur], q=$("q").value.toLowerCase();
+  $("t").textContent=s.label;$("h").textContent=s.hint;nav();
+  const lab=n=>s.f.find(f=>f[0]===n)[1];
+  $("th").innerHTML="<tr>"+s.cols.map(c=>`<th>${lab(c)}</th>`).join("")+"<th></th></tr>";
+  const rows=DB[cur].filter(r=>!q||JSON.stringify(r).toLowerCase().includes(q));
+  $("tb").innerHTML=rows.map(r=>`<tr>${s.cols.map(c=>`<td>${cell(cur,c,r[c])}</td>`).join("")}<td class="act">
+   ${cur==="feedback"&&r.status==="pending"?`<button class="btn g s" data-a="ok" data-id="${r.id}">Approve</button>`:""}
+   ${q?"":`<button class="btn o s" data-a="up" data-id="${r.id}" title="Move up">↑</button><button class="btn o s" data-a="dn" data-id="${r.id}" title="Move down">↓</button>`}
+   <button class="btn s" data-a="ed" data-id="${r.id}">Edit</button><button class="btn r s" data-a="del" data-id="${r.id}">Delete</button></td></tr>`).join("");
+  $("em").hidden=rows.length>0;$("em").textContent=q?"No matches.":"Nothing here yet. Click “Add new”.";
+}
+
+/* ===== Add / edit ===== */
+function openForm(id){
+  const s=SEG[cur];editing=id;const r=id?DB[cur].find(x=>x.id===id):{};
+  $("mt").textContent=(id?"Edit ":"Add new ")+s.label.toLowerCase().replace(/s$/,"");
+  $("mfields").innerHTML=s.f.map(([n,l,t,o])=>{
+    const v=r[n]??(t==="s"?o[0]:(t==="d"&&n==="date"&&cur==="feedback"?new Date().toISOString().slice(0,10):""));
+    if(t==="i")return `<div class="lbl" style="font-weight:700;font-size:.9rem;margin-bottom:.9rem">${l}
+      <input type="hidden" name="${n}" value="${esc(v)}">
+      <div class="imgbox"><div id="imgslot">${v?`<img id="imgprev" src="${esc(v)}" alt="Current cover">`:`<div class="noimg">No image</div>`}</div>
+        <div><input type="file" id="imgfile" accept="image/png,image/jpeg,image/webp">
+        <small id="imginfo">JPG or PNG up to 15 MB. It is converted to a small WebP picture (about 30–80 KB) before upload.</small>
+        <button type="button" class="btn o s" id="imgclear" ${v?"":"hidden"}>Remove image</button></div></div></div>`;
+    const inp=t==="a"?`<textarea name="${n}" rows="4">${esc(v)}</textarea>`
+      :t==="s"?`<select name="${n}">${o.map(x=>`<option ${x==v?"selected":""}>${esc(x)}</option>`).join("")}</select>`
+      :`<input name="${n}" type="${t==="n"?"number":t==="d"?"date":"text"}" value="${esc(v)}">`;
+    return `<label>${l}${inp}</label>`}).join("");
+  fresh=null;originalImg=r.image||"";
+  $("modal").hidden=false;$("mfields").querySelector("input:not([type=hidden]),textarea,select").focus();
+  if($("imgfile")){$("imgfile").onchange=onPickImage;$("imgclear").onclick=clearImage}
+}
+
+/* ===== Cover images: convert to WebP in the browser, upload the small file ===== */
+let fresh=null, originalImg="";   // fresh = image uploaded in this open form but not saved yet
+function delImg(u){const m=/id=([a-f0-9]{16})$/.exec(u||"");if(!m)return;fetch("/api/upload-image?id="+m[1],{method:"DELETE",headers:{Authorization:"Bearer "+token()}}).catch(()=>{})}
+const blobOf=(c,type,q)=>new Promise(r=>c.toBlob(r,type,q));
+const dataUrl=b=>new Promise((ok,no)=>{const f=new FileReader();f.onload=()=>ok(f.result);f.onerror=()=>no(new Error("Could not read the image."));f.readAsDataURL(b)});
+async function toSmallImage(file){
+  if(!/^image\/(png|jpe?g|webp)$/.test(file.type))throw new Error("Please choose a JPG, PNG or WebP picture.");
+  if(file.size>15*1024*1024)throw new Error("That picture is larger than 15 MB.");
+  let bmp;
+  try{bmp=await createImageBitmap(file)}   // also applies the phone-camera rotation
+  catch(e){bmp=await new Promise((ok,no)=>{const i=new Image();i.onload=()=>ok(i);i.onerror=()=>no(new Error("Could not read that picture."));i.src=URL.createObjectURL(file)})}
+  const w0=bmp.width||bmp.naturalWidth,h0=bmp.height||bmp.naturalHeight;
+  if(!w0||!h0)throw new Error("Could not read that picture.");
+  let scale=Math.min(1,600/w0,900/h0), q=0.82, blob, tries=0;
+  const LIMIT=80*1024;
+  do{
+    const c=document.createElement("canvas");c.width=Math.max(1,Math.round(w0*scale));c.height=Math.max(1,Math.round(h0*scale));
+    const x=c.getContext("2d");x.fillStyle="#fff";x.fillRect(0,0,c.width,c.height);x.imageSmoothingQuality="high";x.drawImage(bmp,0,0,c.width,c.height);
+    blob=await blobOf(c,"image/webp",q);
+    if(!blob||blob.type!=="image/webp")blob=await blobOf(c,"image/jpeg",q);   // very old browsers cannot write WebP
+    if(!blob)throw new Error("Could not convert that picture.");
+    if(blob.size<=LIMIT)break;
+    if(q>0.5)q-=0.1;else scale*=0.8;
+  }while(++tries<8);
+  if(blob.size>190*1024)throw new Error("Could not make this picture small enough. Try a smaller one.");
+  return blob;
+}
+async function onPickImage(e){
+  const file=e.target.files[0];if(!file)return;
+  const info=$("imginfo"),save=$("mf").querySelector("button[type=submit]");
+  info.textContent="Converting…";save.disabled=true;
+  try{
+    const blob=await toSmallImage(file);
+    info.textContent="Uploading…";
+    const r=await fetch("/api/upload-image",{method:"POST",headers:{"Content-Type":"application/json","Authorization":"Bearer "+token()},body:JSON.stringify({data:await dataUrl(blob)})});
+    const d=await r.json().catch(()=>({}));
+    if(r.status===401){toast("Session expired. Please log in again.",4000);setTimeout(logout,1500);return}
+    if(!r.ok||!d.url)throw new Error(d.error||("Upload failed ("+r.status+")"));
+    if(fresh)delImg(fresh);               // replaced a picture uploaded earlier in this same form
+    fresh=d.url;
+    document.querySelector('#mfields input[name="image"]').value=d.url;
+    $("imgslot").innerHTML=`<img id="imgprev" src="${URL.createObjectURL(blob)}" alt="New cover">`;
+    $("imgclear").hidden=false;
+    const kb=n=>(n/1024).toFixed(n<10240?1:0)+" KB";
+    info.textContent="Ready: "+kb(file.size)+" → "+kb(blob.size)+(blob.type==="image/webp"?" WebP":" JPEG")+". Click Save to use it.";
+  }catch(err){info.textContent=err.message;e.target.value=""}
+  finally{save.disabled=false}
+}
+function clearImage(){
+  if(fresh){delImg(fresh);fresh=null}
+  document.querySelector('#mfields input[name="image"]').value="";
+  $("imgslot").innerHTML='<div class="noimg">No image</div>';$("imgfile").value="";$("imgclear").hidden=true;
+  $("imginfo").textContent="Image removed. Click Save to apply.";
+}
+function closeModal(){if(fresh){delImg(fresh);fresh=null}$("modal").hidden=true}
+$("mf").addEventListener("submit",e=>{
+  e.preventDefault();const d=Object.fromEntries(new FormData($("mf")));
+  const first=SEG[cur].f[0][0];
+  if(!String(d[first]).trim()){toast("“"+SEG[cur].f[0][1]+"” is required");return}
+  if(cur==="coupons"){
+    const code=String(d.code||"").trim().toUpperCase(),val=Number(d.value);
+    if(!/^[A-Z0-9_-]{2,20}$/.test(code)){toast("Coupon code must be 2–20 letters or numbers, no spaces",4000);return}
+    if(DB.coupons.some(c=>c.id!==editing&&String(c.code).trim().toUpperCase()===code)){toast("That coupon code already exists",4000);return}
+    if(!(val>0)||(d.type==="percent"&&val>100)||val>100000){toast("Discount must be 1–100 for percent, or rupees above 0",4000);return}
+    d.code=code;
+  }
+  if(editing)Object.assign(DB[cur].find(x=>x.id===editing),d);else DB[cur].unshift({id:uid(),...d});
+  const oldImg=originalImg;fresh=null;   // the new picture is now part of the content
+  persist().then(ok=>{if(ok&&oldImg&&oldImg!==d.image)delImg(oldImg)});   // remove the replaced picture only after the save worked
+  $("modal").hidden=true;render();toast(editing?"Updated":"Added");
+});
+$("mc").onclick=closeModal;
+$("modal").addEventListener("mousedown",e=>{if(e.target===$("modal"))closeModal()});
+addEventListener("keydown",e=>{if(e.key==="Escape"&&!$("modal").hidden)closeModal()});
+
+/* ===== Actions ===== */
+$("add").onclick=()=>openForm();
+$("q").oninput=render;
+$("nav").onclick=e=>{const b=e.target.closest("button");if(b){cur=b.dataset.k;$("q").value="";render()}};
+$("tb").onclick=e=>{
+  const b=e.target.closest("button");if(!b)return;const L=DB[cur],i=L.findIndex(x=>x.id===b.dataset.id),a=b.dataset.a;
+  if(a==="ed")return openForm(b.dataset.id);
+  if(a==="del"){if(!confirm("Delete this item? This cannot be undone."))return;const gone=L.splice(i,1)[0];toast("Deleted");persist().then(ok=>{if(ok&&gone&&gone.image)delImg(gone.image)});render();return}
+  if(a==="ok"){L[i].status="approved";toast("Approved")}
+  if(a==="up"&&i>0)[L[i-1],L[i]]=[L[i],L[i-1]];
+  if(a==="dn"&&i<L.length-1)[L[i+1],L[i]]=[L[i],L[i+1]];
+  persist();render();
+};
+function download(name,text,type){const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([text],{type}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),500)}
+$("dl").onclick=()=>{
+  const out={...DB};out.feedback=DB.feedback.filter(f=>f.status==="approved");
+  download("site-content.js","// Generated by the PaperBack admin dashboard. Upload this file next to index.html.\nwindow.SITE_CONTENT = "+JSON.stringify(out,null,2)+";\n","text/javascript");toast("site-content.js downloaded");
+};
+$("ex").onclick=()=>{download("paperback-backup.json",JSON.stringify(DB,null,2),"application/json");toast("Backup downloaded")};
+$("im").onclick=()=>$("file").click();
+$("file").onchange=async e=>{
+  const f=e.target.files[0];if(!f)return;
+  try{const d=JSON.parse(await f.text());for(const k in SEG)if(!Array.isArray(d[k])){if(k==="coupons")d[k]=[];else throw 0}DB=d;persist();render();toast("Imported")}
+  catch(x){alert("That file is not a valid backup.")}e.target.value="";
+};
+$("rs").onclick=()=>{if(confirm("Reset ALL segments to the original website content? Your changes will be lost.")){DB=defaults();persist();render();toast("Reset done")}};
+
+/* ===== Session ===== */
+function logout(){sessionStorage.removeItem(SESS);location.reload()}
+async function enter(){
+  let d;
+  try{
+    const r=await fetch("/api/get-content?admin=1",{headers:{Authorization:"Bearer "+token()},cache:"no-store"});
+    if(r.status===401){sessionStorage.removeItem(SESS);return false}
+    if(!r.ok)throw new Error("Error "+r.status);
+    d=await r.json();
+  }catch(e){$("le").textContent="Could not load the saved content: "+e.message;return false}
+  const saved=d&&d.content&&typeof d.content==="object"?d.content:null, fresh=defaults();
+  DB={};for(const k in SEG)DB[k]=saved&&Array.isArray(saved[k])?saved[k]:(saved&&k!=="coupons"?[]:fresh[k]);
+  for(const k in DB)DB[k].forEach(x=>{if(!x.id)x.id=uid()});
+  lastGood=saved?JSON.stringify(DB):"";
+  const added=mergePending(d&&d.pending);
+  $("login").hidden=true;$("app").hidden=false;render();
+  if(!saved||added||!Array.isArray(saved.coupons))persist();   // first visit: store the starting content; new visitor feedback: mark as received
+  return true;
+}
+$("lf").addEventListener("submit",async e=>{
+  e.preventDefault();$("le").textContent="";
+  const btn=$("lf").querySelector("button");btn.disabled=true;
+  try{
+    const r=await fetch("/api/auth",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({id:$("u").value.trim(),password:$("p").value})});
+    const d=await r.json().catch(()=>({}));
+    if(!r.ok||!d.token){$("le").textContent=d.error||"Login failed.";return}
+    sessionStorage.setItem(SESS,d.token);
+    await enter();
+  }catch(x){$("le").textContent="Could not reach the server."}
+  finally{btn.disabled=false}
+});
+$("lo").onclick=logout;
+
+/* ===== Change password (logged in) and Forgot password (recovery key) ===== */
+function postPw(payload,auth){
+  return fetch("/api/password",{method:"POST",headers:Object.assign({"Content-Type":"application/json"},auth?{Authorization:"Bearer "+token()}:{}),body:JSON.stringify(payload)})
+    .then(async r=>({r,d:await r.json().catch(()=>({}))}));
+}
+$("cp").onclick=()=>{$("pf").reset();$("pe").textContent="";$("pwm").hidden=false;$("pc").focus()};
+$("pcx").onclick=()=>{$("pwm").hidden=true};
+$("pf").addEventListener("submit",async e=>{
+  e.preventDefault();const err=$("pe");err.textContent="";
+  if($("pn").value.length<8){err.textContent="The new password must be at least 8 characters.";return}
+  if($("pn").value!==$("pn2").value){err.textContent="The two new passwords do not match.";return}
+  const btn=$("pf").querySelector("button[type=submit]");btn.disabled=true;
+  try{
+    const {r,d}=await postPw({action:"change",current:$("pc").value,next:$("pn").value},true);
+    if(r.status===401){$("pwm").hidden=true;toast("Session expired. Please log in again.",4000);setTimeout(logout,1500);return}
+    if(!r.ok){err.textContent=d.error||("Error "+r.status);return}
+    $("pwm").hidden=true;$("pf").reset();toast("Password changed ✓",3500);
+  }catch(x){err.textContent="Could not reach the server."}
+  finally{btn.disabled=false}
+});
+$("fp").onclick=()=>{$("lf").hidden=true;$("rf").hidden=false;$("rk").focus()};
+$("rb").onclick=()=>{$("rf").hidden=true;$("lf").hidden=false;$("re").textContent=""};
+$("rf").addEventListener("submit",async e=>{
+  e.preventDefault();const err=$("re");err.textContent="";
+  if(!$("rk").value){err.textContent="Enter the recovery key.";return}
+  if($("rn").value.length<8){err.textContent="The new password must be at least 8 characters.";return}
+  if($("rn").value!==$("rn2").value){err.textContent="The two new passwords do not match.";return}
+  const btn=$("rf").querySelector("button[type=submit]");btn.disabled=true;
+  try{
+    const {r,d}=await postPw({action:"reset",key:$("rk").value,next:$("rn").value},false);
+    if(!r.ok){err.textContent=d.error||("Error "+r.status);return}
+    $("rf").reset();$("rb").onclick();$("le").textContent="Password changed. Log in with your new password.";
+  }catch(x){err.textContent="Could not reach the server."}
+  finally{btn.disabled=false}
+});
+addEventListener("keydown",e=>{if(e.key==="Escape"&&!$("pwm").hidden)$("pwm").hidden=true});
+if(token())enter();
+</script>
+</body>
+</html>

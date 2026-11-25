@@ -1,0 +1,15 @@
+.order-box{margin:1.5rem 0 .5rem;padding:1.25rem;border:1px solid rgba(0,0,0,.12);border-radius:14px;background:var(--tint);max-width:420px}
+.order-price{display:flex;flex-wrap:wrap;align-items:baseline;gap:.6rem;margin-bottom:1rem}
+.order-price .now{font-size:2rem;font-weight:700}
+.order-price .was{color:var(--muted)}
+.order-price .save{font-weight:700;color:var(--green-deep)}
+.coupon label{display:block;font-weight:700;font-size:.95rem;margin-bottom:.4rem}
+.coupon-row{display:flex;gap:.5rem}
+.coupon-row input{flex:1;min-width:0;padding:.65rem .8rem;border:1px solid rgba(0,0,0,.25);border-radius:8px;font:inherit;text-transform:uppercase}
+.coupon-row button{padding:.65rem 1.1rem;border:0;border-radius:8px;background:var(--blue-deep);color:#fff;font:inherit;font-weight:700;cursor:pointer}
+.coupon-msg{min-height:1.4em;margin:.4rem 0 1rem;font-size:.95rem}
+.coupon-msg.ok{color:var(--green-deep)}
+.coupon-msg.bad{color:#b3261e}
+.wa-btn{display:flex;align-items:center;justify-content:center;gap:.6rem;padding:.9rem 1.2rem;border-radius:10px;background:#128c4a;color:#fff;font-weight:700;text-decoration:none}
+.wa-btn:hover{background:#0e7a3f}
+.coupon-row input:focus-visible,.coupon-row button:focus-visible,.wa-btn:focus-visible{outline:3px solid #25d366;outline-offset:2px}

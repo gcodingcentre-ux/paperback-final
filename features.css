@@ -1,0 +1,84 @@
+/* PaperBack – added features. Existing styles live in style.css and are untouched. */
+
+/* nav: fit the extra links */
+@media (min-width:861px){
+  .nav{gap:1.05rem}
+  .nav a{font-size:.97rem}
+}
+
+/* shared card grid used by the new panels */
+.pb-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem}
+.pb-card{background:#fff;border:2px solid #dbe4f4;border-top:6px solid var(--green);border-radius:14px;padding:1.5rem 1.4rem;display:flex;flex-direction:column}
+.pb-card:nth-child(even){border-top-color:var(--blue)}
+.pb-card h3{margin-bottom:.6rem}
+.pb-card p{color:var(--muted)}
+.pb-card ul{margin:0 0 1rem;padding-left:1.1rem;color:var(--muted)}
+.pb-card li{margin-bottom:.3rem}
+.pb-card .tag{align-self:flex-start;font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:var(--tint);color:var(--green-deep);border-radius:999px;padding:.2rem .75rem;margin-bottom:.8rem}
+.pb-card .btn{margin-top:auto;align-self:flex-start}
+.pb-lead{color:var(--muted);max-width:60ch;margin-bottom:2rem}
+
+/* new releases */
+.new-releases{background:linear-gradient(#fff,var(--sky))}
+.release{position:relative}
+.release .badge{position:absolute;top:-10px;right:-8px;z-index:2;background:var(--green);color:var(--ink);font-size:.75rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:.25rem .7rem;border-radius:999px;box-shadow:0 4px 10px -4px rgba(0,0,0,.35)}
+
+/* authors */
+.author-card{display:flex;gap:1rem;align-items:flex-start;background:#fff;border:2px solid #dbe4f4;border-radius:14px;padding:1.3rem}
+.avatar{flex:none;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;font-family:var(--serif);font-weight:700;font-size:1.3rem;color:#fff;background:var(--blue)}
+.avatar.g{background:var(--green);color:var(--ink)}
+.avatar.n{background:var(--blue-deep)}
+.author-card h3{margin-bottom:.1rem}
+.author-card small{display:block;color:var(--green-deep);font-weight:700;margin-bottom:.5rem}
+.author-card p{margin:0;color:var(--muted);font-size:.97rem}
+
+/* events */
+.events{background:var(--sky)}
+.event-card .ico{font-size:1.8rem;line-height:1;margin-bottom:.7rem}
+
+/* form: phone field (mirrors the label styling in style.css) */
+.field{display:grid;gap:.35rem;font-weight:700}
+.field.invalid input{border-color:#B3261E}
+
+/* hero/ctas */
+.btn-green{background:var(--green);border-color:var(--green);color:var(--ink)}
+.btn-green:hover{background:var(--green-deep);border-color:var(--green-deep);color:#fff}
+.cta-row{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.2rem}
+
+/* floating WhatsApp button (bottom right) */
+.wa-float{position:fixed;right:18px;bottom:18px;z-index:40;width:58px;height:58px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 8px 20px -6px rgba(0,0,0,.45);transition:transform .2s}
+.wa-float:hover{transform:scale(1.08)}
+.wa-float svg{width:32px;height:32px;fill:#fff}
+
+/* side social nav (right edge) */
+.side-social{position:fixed;right:0;top:62%;transform:translateY(-50%);z-index:30;display:flex;flex-direction:column;gap:2px;border-radius:10px 0 0 10px;overflow:hidden;box-shadow:-4px 4px 14px -6px rgba(0,0,0,.35)}
+.side-social a{display:grid;place-items:center;width:40px;height:40px;color:#fff;transition:width .2s}
+.side-social a:hover{width:48px}
+.side-social svg{width:20px;height:20px;fill:#fff}
+.side-social .fb{background:#1877F2}
+.side-social .ig{background:linear-gradient(45deg,#F9A13B,#E1306C 50%,#833AB4)}
+
+/* extended footer */
+.site-footer{display:block}
+.foot-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem}
+.foot-ext{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2rem;margin-top:2rem;padding-top:2rem;border-top:1px solid #cfdcb8}
+.foot-ext h4{font-family:var(--serif);font-size:1.05rem;margin:0 0 .7rem;color:var(--blue-deep)}
+.foot-ext p,.foot-ext li{color:var(--muted);margin:0 0 .4rem;font-size:.97rem}
+.foot-ext ul{list-style:none;margin:0;padding:0}
+.foot-ext a{text-decoration:none}
+.foot-ext a:hover{color:var(--blue);text-decoration:underline}
+.foot-bottom{margin-top:2rem;padding-top:1.2rem;border-top:1px solid #cfdcb8;display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;justify-content:space-between;color:var(--muted);font-size:.92rem}
+
+/* policy pages */
+.policy{max-width:760px;margin:0 auto;padding:3rem clamp(1rem,5vw,2rem) 4rem}
+.policy h1{font-size:clamp(2rem,5vw,3rem);margin-bottom:.5rem}
+.policy h2{font-size:1.35rem;margin:2rem 0 .6rem}
+.policy p,.policy li{color:var(--muted)}
+.policy .updated{font-size:.9rem}
+
+@media (max-width:860px){
+  .wa-float{width:54px;height:54px;right:14px;bottom:14px}
+  .side-social{top:70%}
+  .side-social a{width:36px;height:36px}
+  .release .badge{right:0}
+}

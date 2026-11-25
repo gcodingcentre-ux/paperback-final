@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PaperBack Publishers – Books worth holding</title>
+<meta name="description" content="PaperBack Publishers edits, designs, prints and distributes books for first-time and established authors.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Figtree:wght@400;500;700&family=Noto+Sans+Bengali:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="carousel.css">
+<link rel="stylesheet" href="features.css">
+<link rel="stylesheet" href="ux.css">
+<link rel="stylesheet" href="search.css">
+<link rel="stylesheet" href="popup.css">
+<link rel="icon" href="/favicon.ico?v=2" sizes="48x48">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=2">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png?v=2">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png?v=2">
+<link rel="apple-touch-icon" href="/favicon-180.png?v=2">
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="#top" aria-label="PaperBack Publishers home">
+    <span class="brand-mark"><img src="assets/logo.jpg" alt=""></span>
+    <span class="brand-name"><b>Paper</b><i>Back</i><small>Publishers</small></span>
+  </a>
+  <button class="nav-toggle" aria-expanded="false" aria-controls="nav">Menu</button>
+  <nav id="nav" class="nav">
+    <a href="#new-releases">New releases</a>
+    <a href="#catalogue">Catalogue</a>
+    <div class="dd"><button class="dd-btn" data-href="#authors" aria-expanded="false" aria-haspopup="true">Authors</button><div class="dd-menu"><a href="#authors">Our authors</a><a href="#submit">Become an author</a></div></div>
+    <div class="dd"><button class="dd-btn" data-href="#publishing" aria-expanded="false" aria-haspopup="true">Publishing</button><div class="dd-menu"><a href="#pub-self">Self-publishing</a><a href="#pub-hybrid">Hybrid publishing</a><a href="#pub-marketing">Marketing</a><a href="tel:+919000000000">Book a free consultation</a></div></div>
+    <div class="dd"><button class="dd-btn" data-href="#events" aria-expanded="false" aria-haspopup="true">Events</button><div class="dd-menu"><a href="#ev-workshops">Workshops</a><a href="#ev-launches">Book launches</a><a href="#ev-other">Other events</a></div></div>
+    <div class="dd"><button class="dd-btn" data-href="#about" aria-expanded="false" aria-haspopup="true">About</button><div class="dd-menu"><a href="#about">Who we are</a><a href="#services">For authors</a><a href="#process">How it works</a></div></div>
+    <a class="btn btn-small" href="#submit">Submit manuscript</a>
+  </nav>
+</header>
+
+<main id="top">
+<!-- Search bar: the two placeholders (English / Bengali) slide in turn. Edit the text in the two <span> tags below. -->
+<section class="search-band" aria-label="Search books">
+  <form class="sb" id="sb-form" role="search" autocomplete="off">
+    <div class="sb-field">
+      <svg class="sb-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+      <input class="sb-input" id="sb-input" type="search" name="q" role="combobox" aria-label="Search books" aria-autocomplete="list" aria-expanded="false" aria-controls="sb-results" enterkeyhint="search" autocomplete="off" spellcheck="false">
+      <div class="sb-ph" aria-hidden="true"><span>Search your favourite book</span><span lang="bn">কোন বই খুঁজছেন?</span></div>
+      <button class="sb-go" type="submit" aria-label="Search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></button>
+    </div>
+    <ul class="sb-results" id="sb-results" role="listbox" aria-label="Search results" hidden></ul>
+  </form>
+</section>
+<!-- Carousel markup. To add a slide, copy one <article class="slide ..."> block.
+     Colours: is-blue, is-navy, is-green. -->
+<section class="carousel" aria-roledescription="carousel" aria-label="Featured at PaperBack Publishers">
+  <div class="slides">
+    <article class="slide is-navy">
+      <div>
+        <h2>New titles for the season</h2>
+        <p>Fiction, non-fiction, poetry and children's books from our latest list.</p>
+        <a class="btn" href="#catalogue">Browse our titles</a>
+      </div>
+      <div class="slide-art" aria-hidden="true">
+        <div class="cover c-blue"><strong>The Salt Road</strong><span>Meera Sengupta</span></div>
+        <div class="cover c-green"><strong>Monsoon Ledger</strong><span>Arjun Dutta</span></div>
+        <div class="cover c-moss"><strong>Ink &amp; Alum</strong><span>Kabir Chanda</span></div>
+      </div>
+    </article>
+    <article class="slide is-green">
+      <div>
+        <h2>Publish your first book</h2>
+        <p>Send us your manuscript. An editor reads every submission and replies within two weeks.</p>
+        <a class="btn" href="#submit">Submit your manuscript</a>
+      </div>
+      <div class="slide-art" aria-hidden="true">
+        <div class="cover c-navy"><strong>Your title here</strong><span>Your name</span></div>
+        <div class="cover c-blue"><strong>Quiet Algorithms</strong><span>Ritika Bose</span></div>
+      </div>
+    </article>
+    <article class="slide is-blue">
+      <div>
+        <h2>Stories for young readers</h2>
+        <p>Picture books and early readers that children ask to hear again.</p>
+        <a class="btn" href="#catalogue">See children's books</a>
+      </div>
+      <div class="slide-art" aria-hidden="true">
+        <div class="cover c-green"><strong>Little Lantern</strong><span>Ananya Roy</span></div>
+        <div class="cover c-navy"><strong>Counting Stars at Noon</strong><span>Tanmoy Paul</span></div>
+      </div>
+    </article>
+  </div>
+  <button class="car-btn car-prev" aria-label="Previous slide">&#8249;</button>
+  <button class="car-btn car-next" aria-label="Next slide">&#8250;</button>
+  <div class="dots"></div>
+</section>
+
+  <section class="hero">
+    <div class="hero-copy">
+      <h1>Books worth holding.</h1>
+      <p class="lead">We edit, design, print and distribute books for first-time and established authors, from the first draft to the bookshop shelf.</p>
+      <div class="actions">
+        <a class="btn" href="#submit">Submit your manuscript</a>
+        <a class="btn btn-ghost" href="#catalogue">Browse our titles</a>
+        <a class="btn btn-green" href="tel:+919000000000">Book a free consultation</a>
+      </div>
+    </div>
+    <div class="shelf" aria-hidden="true">
+      <span class="spine s1"><em>The Salt Road</em></span>
+      <span class="spine s2"><em>Monsoon Ledger</em></span>
+      <span class="spine s3"><em>Little Lantern</em></span>
+      <span class="spine s4"><em>Quiet Algorithms</em></span>
+      <span class="spine s5"><em>Tea Garden Notes</em></span>
+      <span class="spine s6"><em>Ink &amp; Alum</em></span>
+      <span class="spine s7"><em>Rivers of Kolkata</em></span>
+    </div>
+  </section>
+
+  <section id="new-releases" class="section new-releases">
+    <div class="section-head">
+      <h2>New releases</h2>
+      <a class="btn btn-ghost btn-small" href="#catalogue">See the full catalogue</a>
+    </div>
+    <div class="books">
+      <figure class="book release">
+        <span class="badge">New</span>
+        <a class="book-link" href="book.html?book=the-salt-road">
+          <div class="cover c-blue"><strong>The Salt Road</strong><span>Meera Sengupta</span></div>
+          <figcaption><b>The Salt Road</b><span class="author">Meera Sengupta</span> · Fiction</figcaption>
+        </a>
+      </figure>
+      <figure class="book release">
+        <span class="badge">New</span>
+        <a class="book-link" href="book.html?book=monsoon-ledger">
+          <div class="cover c-green"><strong>Monsoon Ledger</strong><span>Arjun Dutta</span></div>
+          <figcaption><b>Monsoon Ledger</b><span class="author">Arjun Dutta</span> · Fiction</figcaption>
+        </a>
+      </figure>
+      <figure class="book release">
+        <span class="badge">New</span>
+        <a class="book-link" href="book.html?book=quiet-algorithms">
+          <div class="cover c-navy"><strong>Quiet Algorithms</strong><span>Ritika Bose</span></div>
+          <figcaption><b>Quiet Algorithms</b><span class="author">Ritika Bose</span> · Non-fiction</figcaption>
+        </a>
+      </figure>
+      <figure class="book release">
+        <span class="badge">New</span>
+        <a class="book-link" href="book.html?book=little-lantern">
+          <div class="cover c-green"><strong>Little Lantern</strong><span>Ananya Roy</span></div>
+          <figcaption><b>Little Lantern</b><span class="author">Ananya Roy</span> · Children</figcaption>
+        </a>
+      </figure>
+    </div>
+  </section>
+
+  <section id="catalogue" class="section">
+    <div class="section-head">
+      <h2>From our list</h2>
+      <div class="filters" role="group" aria-label="Filter by genre">
+        <button class="chip is-active" data-genre="All">All</button>
+        <button class="chip" data-genre="Fiction">Fiction</button>
+        <button class="chip" data-genre="Non-fiction">Non-fiction</button>
+        <button class="chip" data-genre="Children">Children</button>
+        <button class="chip" data-genre="Poetry">Poetry</button>
+      </div>
+    </div>
+    <div id="books" class="books"></div>
+  </section>
+
+  <section id="authors" class="section tint">
+    <h2>Our authors</h2>
+    <p class="pb-lead">The writers behind our list: journalists, teachers, poets and printers from across Bengal.</p>
+    <div class="pb-grid">
+      <article class="author-card">
+        <span class="avatar">M</span>
+        <div><h3>Meera Sengupta</h3><small>The Salt Road · Fiction</small>
+        <p>Grew up in Howrah and worked as a journalist for twelve years before turning to fiction.</p></div>
+      </article>
+      <article class="author-card">
+        <span class="avatar g">A</span>
+        <div><h3>Arjun Dutta</h3><small>Monsoon Ledger · Fiction</small>
+        <p>A chartered accountant and short-story writer whose work has appeared in Bengali and English magazines.</p></div>
+      </article>
+      <article class="author-card">
+        <span class="avatar n">R</span>
+        <div><h3>Ritika Bose</h3><small>Quiet Algorithms · Non-fiction</small>
+        <p>A data scientist and writer who teaches at a university in West Bengal.</p></div>
+      </article>
+      <article class="author-card">
+        <span class="avatar g">S</span>
+        <div><h3>Sourav Mitra</h3><small>Rivers of Kolkata · Non-fiction</small>
+        <p>An urban historian and walking-tour guide who has spent two decades mapping Kolkata's canals.</p></div>
+      </article>
+      <article class="author-card">
+        <span class="avatar">A</span>
+        <div><h3>Ananya Roy</h3><small>Little Lantern · Children</small>
+        <p>A primary school teacher who writes the stories she wishes she had to read aloud in class.</p></div>
+      </article>
+      <article class="author-card">
+        <span class="avatar n">I</span>
+        <div><h3>Isha Banerjee</h3><small>Notes from a Tea Garden · Poetry</small>
+        <p>Grew up on a tea estate in the Darjeeling hills and now teaches literature.</p></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="publishing" class="section">
+    <h2>Publishing with us</h2>
+    <p class="pb-lead">Three ways to publish. Not sure which fits your book? Talk to us first, it is free.</p>
+    <div class="pb-grid">
+      <article class="pb-card">
+        <span class="tag">You lead</span>
+        <h3>Self-publishing</h3>
+        <p>You keep full control and full rights. We provide the services you choose: editing, cover and layout, ISBN, printing and online listing.</p>
+        <ul><li>Pick only the services you need</li><li>You own your rights and set your price</li><li>Print runs from 100 copies</li></ul>
+        <a class="btn btn-ghost" href="#submit">Get started</a>
+      </article>
+      <article class="pb-card">
+        <span class="tag">We share the work</span>
+        <h3>Hybrid publishing</h3>
+        <p>A partnership: you contribute to the production cost, and we bring our editors, designers and distribution network to the book.</p>
+        <ul><li>Professional editing and design included</li><li>Bookshop and library distribution</li><li>Higher royalty share than traditional deals</li></ul>
+        <a class="btn btn-ghost" href="#submit">Get started</a>
+      </article>
+      <article class="pb-card">
+        <span class="tag">Get it read</span>
+        <h3>Marketing</h3>
+        <p>A book needs readers. We plan the launch, set up your author page and online listings, and help you reach reviewers, bookshops and local media.</p>
+        <ul><li>Launch plan and author profile</li><li>Social media and press outreach</li><li>Book launch and event support</li></ul>
+        <a class="btn btn-ghost" href="#submit">Get started</a>
+      </article>
+    </div>
+    <div class="cta-row">
+      <a class="btn btn-green" href="tel:+919000000000">Book a free consultation</a>
+    </div>
+  </section>
+
+  <section id="services" class="section tint">
+    <h2>Everything your book needs</h2>
+    <div class="services">
+      <article>
+        <h3>Editing</h3>
+        <p>Developmental, line and copy editing by editors who work in your genre.</p>
+      </article>
+      <article>
+        <h3>Cover and layout</h3>
+        <p>Covers and interiors designed for the print edition and the e-book.</p>
+      </article>
+      <article>
+        <h3>Print and ISBN</h3>
+        <p>Paperback and hardback runs from 100 copies, with ISBN registration included.</p>
+      </article>
+      <article>
+        <h3>Distribution</h3>
+        <p>Your book reaches bookshops, libraries and online stores across India and abroad.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="process" class="section">
+    <h2>From manuscript to bookshelf</h2>
+    <ol class="steps">
+      <li><h3>Send your manuscript</h3><p>Share your draft and a short synopsis. We reply within two weeks.</p></li>
+      <li><h3>Edit together</h3><p>Your editor returns notes. You approve every change.</p></li>
+      <li><h3>Design and proof</h3><p>Review the cover and the typeset pages before anything is printed.</p></li>
+      <li><h3>Print and launch</h3><p>We print, ship and help you plan a launch.</p></li>
+    </ol>
+  </section>
+
+  <section id="events" class="section events">
+    <h2>Events</h2>
+    <p class="pb-lead">Meet editors, hear authors read and celebrate new books. Ask us for upcoming dates and venues.</p>
+    <div class="pb-grid">
+      <article class="pb-card event-card">
+        <div class="ico" aria-hidden="true">✍️</div>
+        <h3>Workshops</h3>
+        <p>Hands-on sessions on writing, editing, getting a manuscript ready and understanding the publishing process.</p>
+        <a class="btn btn-ghost" href="https://wa.me/919000000000?text=Hello%2C%20please%20share%20details%20of%20upcoming%20workshops." target="_blank" rel="noopener">Ask about workshops</a>
+      </article>
+      <article class="pb-card event-card">
+        <div class="ico" aria-hidden="true">📚</div>
+        <h3>Book launches</h3>
+        <p>Readings, signings and conversations to launch our new titles, open to readers, friends and the press.</p>
+        <a class="btn btn-ghost" href="https://wa.me/919000000000?text=Hello%2C%20please%20share%20details%20of%20upcoming%20book%20launches." target="_blank" rel="noopener">Ask about launches</a>
+      </article>
+      <article class="pb-card event-card">
+        <div class="ico" aria-hidden="true">🎤</div>
+        <h3>Other events</h3>
+        <p>Author meet-ups, book fair stalls, poetry evenings and school and library visits throughout the year.</p>
+        <a class="btn btn-ghost" href="https://wa.me/919000000000?text=Hello%2C%20please%20share%20details%20of%20upcoming%20events." target="_blank" rel="noopener">Ask about events</a>
+      </article>
+    </div>
+  </section>
+
+  <section id="feedback" class="section feedback">
+    <h2>Tell us what you think</h2>
+    <p class="pb-lead">Read one of our books or worked with us? A quick note helps us and other readers.</p>
+    <form id="feedback-form" class="fb-form" novalidate>
+      <fieldset class="fb-rating">
+        <legend>Your rating</legend>
+        <div class="stars">
+          <input type="radio" id="star5" name="rating" value="5"><label for="star5" title="5 stars"><span class="sr">5 stars</span></label>
+          <input type="radio" id="star4" name="rating" value="4"><label for="star4" title="4 stars"><span class="sr">4 stars</span></label>
+          <input type="radio" id="star3" name="rating" value="3"><label for="star3" title="3 stars"><span class="sr">3 stars</span></label>
+          <input type="radio" id="star2" name="rating" value="2"><label for="star2" title="2 stars"><span class="sr">2 stars</span></label>
+          <input type="radio" id="star1" name="rating" value="1"><label for="star1" title="1 star"><span class="sr">1 star</span></label>
+        </div>
+        <span class="error" id="fb-rating-error" aria-live="polite"></span>
+      </fieldset>
+      <div class="fb-field">
+        <label for="fb-name">Your name</label>
+        <input id="fb-name" name="name" type="text" autocomplete="name" required>
+        <span class="error" aria-live="polite"></span>
+      </div>
+      <div class="fb-field">
+        <label for="fb-message">Your feedback</label>
+        <textarea id="fb-message" name="message" rows="4" required></textarea>
+        <span class="error" aria-live="polite"></span>
+      </div>
+      <button class="btn" type="submit">Send feedback</button>
+      <p id="fb-status" class="status" role="status"></p>
+    </form>
+    <h3 class="fb-list-title">What readers say</h3>
+    <div id="fb-list" class="fb-list"></div>
+  </section>
+
+  <section id="about" class="section about">
+    <div>
+      <h2>Independent, and on the author's side</h2>
+      <p>PaperBack Publishers is a small team of editors, designers and book lovers. We keep our lists short so every author gets time, and every contract is written in plain language.</p>
+    </div>
+    <dl class="facts">
+      <div><dt>Titles published</dt><dd>240+</dd></div>
+      <div><dt>Languages</dt><dd>English, Bengali, Hindi</dd></div>
+      <div><dt>Author royalty</dt><dd>Up to 40%</dd></div>
+    </dl>
+  </section>
+
+  <section id="submit" class="section submit">
+    <div>
+      <h2>Submit your manuscript</h2>
+      <p>Tell us about your book. An editor will read your message and write back within two weeks.</p>
+    </div>
+    <form id="form" novalidate>
+      <label>Full name
+        <input name="name" type="text" autocomplete="name" required>
+        <span class="error" aria-live="polite"></span>
+      </label>
+      <label>Email
+        <input name="email" type="email" autocomplete="email" required>
+        <span class="error" aria-live="polite"></span>
+      </label>
+      <div class="field">
+        <span id="phone-label">Phone number</span>
+        <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+91 98765 43210" aria-labelledby="phone-label" required>
+        <span class="error" aria-live="polite"></span>
+      </div>
+      <label>Genre
+        <select name="genre" required>
+          <option value="">Choose a genre</option>
+          <option>Fiction</option><option>Non-fiction</option><option>Children</option><option>Poetry</option><option>Other</option>
+        </select>
+        <span class="error" aria-live="polite"></span>
+      </label>
+      <label>About your book
+        <textarea name="message" rows="4" required></textarea>
+        <span class="error" aria-live="polite"></span>
+      </label>
+      <button class="btn" type="submit">Send manuscript details</button>
+      <p id="status" class="status" role="status"></p>
+      <a class="btn btn-green" href="tel:+919000000000" style="justify-self:start">Book a free consultation</a>
+    </form>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="foot-top">
+  <div class="brand">
+    <span class="brand-mark"><img src="assets/logo.jpg" alt=""></span>
+    <span class="brand-name"><b>Paper</b><i>Back</i><small>Publishers</small></span>
+  </div>
+  <p>hello@paperbackpublishers.com</p>
+  <p>&copy; <span id="year"></span> PaperBack Publishers</p>
+  </div>
+  <div class="foot-ext">
+    <div>
+      <h4>Contact us</h4>
+      <p>PaperBack Publishers<br>Kolkata, West Bengal, India</p>
+      <p>Phone: <a href="tel:+919000000000">+91 90000 00000</a></p>
+      <p>Email: <a href="mailto:hello@paperbackpublishers.com">hello@paperbackpublishers.com</a></p>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="#new-releases">New releases</a></li>
+        <li><a href="#catalogue">Catalogue</a></li>
+        <li><a href="#authors">Authors</a></li>
+        <li><a href="#publishing">Publishing</a></li>
+        <li><a href="#events">Events</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Policies</h4>
+      <ul>
+        <li><a href="refund-policy.html">Refund policy</a></li>
+        <li><a href="privacy-policy.html">Privacy policy</a></li>
+        <li><a href="terms-and-conditions.html">Terms and conditions</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Talk to us</h4>
+      <p>Free consultation for new authors.</p>
+      <a class="btn btn-green btn-small" href="tel:+919000000000">Book a free consultation</a>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>&copy; <span id="year2"></span> PaperBack Publishers. All rights reserved.</span>
+    <span><a href="refund-policy.html">Refund</a> · <a href="privacy-policy.html">Privacy</a> · <a href="terms-and-conditions.html">Terms</a></span>
+  </div>
+</footer>
+
+<!-- WhatsApp button (bottom right). Replace 919000000000 with your number: country code + number, no + or spaces. -->
+<a class="wa-float" href="https://wa.me/919000000000?text=Hello%20PaperBack%20Publishers%2C%20I%20would%20like%20to%20know%20more." target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
+  <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16.04 3C9.4 3 4 8.38 4 15.02c0 2.12.55 4.19 1.6 6.01L4 28l7.15-1.87a12 12 0 0 0 4.89 1.04C22.68 27.17 28 21.8 28 15.16 28 8.5 22.68 3 16.04 3zm0 21.9c-1.5 0-2.97-.4-4.25-1.16l-.3-.18-4.24 1.11 1.13-4.13-.2-.32a9.9 9.9 0 0 1-1.52-5.2c0-5.5 4.5-9.97 10-9.97s10.02 4.47 10.02 9.97-4.5 9.88-10.02 9.88zm5.5-7.44c-.3-.15-1.78-.88-2.06-.98-.28-.1-.48-.15-.68.15-.2.3-.78.98-.96 1.18-.18.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.78-1.67-2.08-.18-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.68-1.64-.93-2.25-.24-.58-.5-.5-.68-.5h-.58c-.2 0-.53.08-.8.38-.28.3-1.05 1.03-1.05 2.5s1.08 2.9 1.23 3.1c.15.2 2.1 3.2 5.08 4.48.7.3 1.26.48 1.7.62.72.23 1.37.2 1.88.12.57-.08 1.78-.73 2.03-1.43.25-.7.25-1.3.18-1.43-.08-.13-.28-.2-.58-.35z"/></svg>
+</a>
+
+<!-- Social side nav (right edge). Replace the handles with your real pages. -->
+<nav class="side-social" aria-label="Social media">
+  <a class="fb" href="https://www.facebook.com/paperbackpublishers" target="_blank" rel="noopener" aria-label="PaperBack Publishers on Facebook">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8.2h2.8l.5-3.3h-3.3V8.4c0-.95.4-1.7 1.8-1.7h1.6V3.8C16.6 3.7 15.6 3.6 14.6 3.6c-2.6 0-4.3 1.6-4.3 4.4v2.5H7.5v3.3h2.8V22h3.2z"/></svg>
+  </a>
+  <a class="ig" href="https://www.instagram.com/paperbackpublishers" target="_blank" rel="noopener" aria-label="PaperBack Publishers on Instagram">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.2-3.2a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4z"/></svg>
+  </a>
+</nav>
+
+<script src="feedback-data.js"></script>
+<script src="script.js"></script>
+<script src="carousel.js"></script>
+<script src="features.js"></script>
+<script src="ux.js"></script>
+<script src="cms.js"></script>
+<script src="counters.js"></script>
+<script src="search.js"></script>
+<script src="popup.js"></script>
+<script>document.getElementById("year2").textContent = new Date().getFullYear();</script>
+</body>
+</html>

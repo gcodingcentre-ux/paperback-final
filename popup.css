@@ -1,0 +1,27 @@
+/* PaperBack – manuscript form pop-up (the title and the cross stay in view; only the form scrolls) */
+.pb-pop{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:1rem;background:rgba(10,21,48,.65);opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s;overscroll-behavior:contain}
+.pb-pop.open{opacity:1;visibility:visible}
+.pb-pop-box{display:flex;flex-direction:column;background:#fff;border-radius:16px;width:100%;max-width:520px;max-height:92vh;max-height:calc(100dvh - 2rem);overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.35);transform:translateY(14px);transition:transform .25s}
+.pb-pop.open .pb-pop-box{transform:none}
+.pb-pop-head{flex:none;display:flex;align-items:center;justify-content:space-between;gap:.8rem;padding:1rem 1rem .8rem 1.5rem;border-bottom:1px solid #dbe4f4}
+.pb-pop-head h2{margin:0;font-size:1.4rem;line-height:1.2}
+.pb-pop-x{flex:none;width:44px;height:44px;border:0;border-radius:50%;background:#EAF0FB;color:#1E3A6E;font-size:1.7rem;line-height:1;cursor:pointer;display:grid;place-items:center;touch-action:manipulation}
+.pb-pop-x:hover,.pb-pop-x:focus-visible{background:#dbe4f4}
+.pb-pop-body{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding:1rem 1.5rem 1.5rem}
+.pb-pop-body>p{margin:0 0 1rem;color:var(--muted,#51607D);max-width:none}
+.pb-pop-body form{display:grid;gap:1rem}
+.pb-pop-body input,.pb-pop-body select,.pb-pop-body textarea{font-size:16px}   /* 16px stops iPhones zooming in when a field is tapped */
+.pb-pop-body .btn{justify-self:stretch;text-align:center}
+body.pb-pop-lock{overflow:hidden}
+@media(max-width:480px){
+  .pb-pop{padding:.6rem}
+  .pb-pop-box{max-height:calc(100dvh - 1.2rem)}
+  .pb-pop-head{padding:.7rem .7rem .6rem 1rem}
+  .pb-pop-head h2{font-size:1.2rem}
+  .pb-pop-body{padding:.8rem 1rem 1.2rem}
+  .pb-pop-body>p{font-size:.92rem;margin-bottom:.8rem}
+  .pb-pop-body form{gap:.8rem}
+  .pb-pop-body textarea{min-height:5.5rem}
+}
+@media(max-height:480px) and (orientation:landscape){.pb-pop-body>p{display:none}.pb-pop-body form{gap:.6rem}}
+@media(prefers-reduced-motion:reduce){.pb-pop,.pb-pop-box{transition:none}}

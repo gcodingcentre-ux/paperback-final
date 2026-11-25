@@ -1,0 +1,25 @@
+.book-page{display:grid;grid-template-columns:minmax(220px,340px) 1fr;gap:clamp(2rem,6vw,5rem);align-items:start;max-width:1100px;margin:0 auto;padding:clamp(2rem,6vw,4rem) clamp(1rem,5vw,4rem)}
+.back{display:inline-block;margin:2rem clamp(1rem,5vw,4rem) 0;font-weight:700;color:var(--blue-deep)}
+.big-cover{font-size:1.15rem;position:sticky;top:100px}
+.big-cover strong{font-size:2rem}
+.book-info h1{font-size:clamp(2.2rem,5vw,3.5rem);margin-bottom:.3rem}
+.book-info h2{font-size:1.5rem;margin:2rem 0 .6rem}
+.book-info p{max-width:60ch}
+.book-info .genre{display:inline-block;background:var(--tint);color:var(--green-deep);font-weight:700;padding:.2rem .8rem;border-radius:999px;margin-bottom:1rem}
+.book-info .by{font-size:1.2rem;color:var(--muted)}
+.book-info .btn{margin-top:1.5rem}
+/* cover photo uploaded from the admin: keep the picture inside its box (sticky on desktop, normal flow on mobile) */
+.cover.has-img.big-cover{position:sticky;top:100px;width:100%;max-width:340px;justify-self:start}
+@media (max-width:700px){.book-page{grid-template-columns:1fr}.big-cover{position:static;max-width:260px}.cover.has-img.big-cover{position:relative;top:auto;max-width:260px;width:100%;margin:0 auto}}
+
+/* centred section headers */
+.book-info h2{text-align:center}
+.book-info h2::after{content:"";display:block;width:48px;height:3px;margin:.5rem auto 0;border-radius:3px;background:var(--green)}
+/* backdrop on author name */
+.book-info .by{display:inline-block;background:var(--sky);color:var(--blue-deep);font-size:1.05rem;font-weight:700;padding:.35rem 1rem;border-radius:999px;margin:.2rem 0 0}
+/* back-to-top */
+.to-top{position:fixed;right:18px;bottom:20px;z-index:40;width:46px;height:46px;border:0;border-radius:50%;background:var(--blue-deep);color:#fff;cursor:pointer;display:grid;place-items:center;box-shadow:0 8px 20px -6px rgba(22,35,63,.55);opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .25s,transform .25s,visibility .25s}
+.to-top.show{opacity:1;visibility:visible;transform:none}
+.to-top:hover{background:var(--blue)}
+.to-top:focus-visible{outline:3px solid var(--green);outline-offset:2px}
+.to-top svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
